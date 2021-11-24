@@ -23,4 +23,16 @@ class AlbumViewModel @Inject constructor(
         }
     }
 
+    fun insert(album: Album) {
+        viewModelScope.launch {
+            albumRepository.insert(album)
+        }
+    }
+
+    fun delete(album: Album) {
+        viewModelScope.launch {
+            albumRepository.delete(album)
+        }
+    }
+
 }

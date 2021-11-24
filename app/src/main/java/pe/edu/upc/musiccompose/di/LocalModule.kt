@@ -21,7 +21,7 @@ object LocalModule {
 
     @Provides
     @Singleton
-    fun provideSongDao(appDatabase: AppDatabase): AlbumDao {
+    fun provideAlbumDao(appDatabase: AppDatabase): AlbumDao {
         return appDatabase.albumDao()
     }
 }

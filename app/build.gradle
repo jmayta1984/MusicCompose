@@ -15,7 +15,7 @@ android {
         versionCode version_code
         versionName version_name
         //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunner "pe.edu.upc.mealscompose.HiltTestRunner"
+        testInstrumentationRunner "pe.edu.upc.musiccompose.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary true
         }

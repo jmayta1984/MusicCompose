@@ -1,7 +1,5 @@
 package pe.edu.upc.musiccompose.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 class Artist(

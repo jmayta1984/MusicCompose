@@ -12,7 +12,6 @@ import androidx.navigation.navArgument
 import pe.edu.upc.musiccompose.ui.screens.albums.AlbumViewModel
 import pe.edu.upc.musiccompose.ui.screens.albums.Albums
 import pe.edu.upc.musiccompose.ui.screens.artists.Artists
-import pe.edu.upc.musiccompose.ui.screens.artists.ArtistsViewModel
 
 @ExperimentalFoundationApi
 @Composable

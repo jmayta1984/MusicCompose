@@ -104,8 +104,6 @@ fun ArtistItem(artist: Artist, selectItem: (artistId: String) -> Unit) {
             ArtistImage(artist)
             Text(artist.name)
         }
-
-
     }
 }
 

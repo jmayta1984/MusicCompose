@@ -5,14 +5,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,27 +21,34 @@ import pe.edu.upc.musiccompose.model.Album
 @Composable
 fun Albums(viewModel: AlbumViewModel) {
     AlbumList(viewModel)
-
 }
 
 @Composable
 fun AlbumList(
     viewModel: AlbumViewModel
-
 ) {
     val albums: List<Album> by viewModel.albums.observeAsState(listOf())
 
     LazyColumn {
         items(albums) { album ->
-            AlbumRow(album)
+            AlbumRow(
+                album,
+                insert = { viewModel.insert(album) },
+                delete = { viewModel.delete(album) }
+            )
         }
     }
 }
 
 @Composable
 fun AlbumRow(
-    album: Album
+    album: Album,
+    insert: () -> Unit,
+    delete: () -> Unit
 ) {
+    var favorite by remember { mutableStateOf(false) }
+    favorite = album.favorite
+
     Card(
         modifier = Modifier
             .padding(4.dp)
@@ -62,13 +65,14 @@ fun AlbumRow(
             IconButton(
                 modifier = Modifier.weight(1f),
                 onClick = {
-
+                    if (favorite) delete() else insert()
+                    favorite = !favorite
                 }) {
                 Icon(
                     Icons.Filled.Favorite,
                     null,
-
-                    )
+                    tint = if (favorite) MaterialTheme.colors.primary else MaterialTheme.colors.onSurface
+                )
             }
         }
     }
