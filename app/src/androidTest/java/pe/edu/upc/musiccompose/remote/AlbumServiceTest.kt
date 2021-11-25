@@ -1,14 +1,15 @@
 package pe.edu.upc.musiccompose.remote
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.runBlocking
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import pe.edu.upc.musiccompose.MockServer
 import javax.inject.Inject
 
 @HiltAndroidTest
@@ -25,10 +26,15 @@ class AlbumServiceTest {
         hiltRule.inject()
     }
 
+    @After
+    fun tearDown() {
+        MockServer.server.shutdown()
+    }
+
     @Test
-    fun fetchAlbumsByArtist() = runBlocking {
+    fun fetchAlbumsByArtistName() = runBlocking {
         val artist = "coldplay"
-        val response = albumService.fetchAlbumsByArtistId(artist)
+        val response = albumService.fetchAlbumsByArtistName(artist)
         val results = response.body()!!.albums
         assertThat(results).isNotEmpty()
     }

@@ -46,6 +46,10 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+    configurations.all {
+        resolutionStrategy.force "com.squareup.okhttp3:okhttp:$okhttp3_version"
+    }
+
 }
 
 dependencies {
@@ -102,4 +106,5 @@ dependencies {
     androidTestImplementation "androidx.arch.core:core-testing:$android_core_testing"
     androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockwebserver_version"
 }
