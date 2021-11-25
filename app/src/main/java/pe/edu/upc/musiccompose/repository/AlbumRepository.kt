@@ -11,8 +11,8 @@ class AlbumRepository @Inject constructor(
     private val albumService: AlbumService,
     private val albumDao: AlbumDao
 ) {
-    suspend fun fetchAlbumsByArtistId(categoryId: String): List<Album> {
-        val response = albumService.fetchAlbumsByArtistId(categoryId)
+    suspend fun fetchAlbumsByArtistName(categoryId: String): List<Album> {
+        val response = albumService.fetchAlbumsByArtistName(categoryId)
         if (response.isSuccessful && response.body() != null) {
             for (item in response.body()!!.albums) {
                 item.favorite = albumDao.fetchById(item.id) != null

@@ -17,9 +17,9 @@ class AlbumViewModel @Inject constructor(
     private val _albums = MutableLiveData<List<Album>>()
     val albums get() = _albums
 
-    fun fetchAlbumsByArtistId(artistId: String) {
+    fun fetchAlbumsByArtistName(artistName: String) {
         viewModelScope.launch {
-            _albums.postValue(albumRepository.fetchAlbumsByArtistId(artistId))
+            _albums.postValue(albumRepository.fetchAlbumsByArtistName(artistName))
         }
     }
 

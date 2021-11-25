@@ -4,7 +4,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import pe.edu.upc.musiccompose.model.Artist
 import pe.edu.upc.musiccompose.remote.AlbumService
 import pe.edu.upc.musiccompose.remote.ArtistService
 import retrofit2.Retrofit
