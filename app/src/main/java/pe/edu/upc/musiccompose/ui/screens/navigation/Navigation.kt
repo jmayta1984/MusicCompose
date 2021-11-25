@@ -33,10 +33,10 @@ fun Navigation() {
             ) { backStackEntry ->
                 val viewModel: AlbumViewModel = hiltViewModel()
 
-                val artistId = backStackEntry.arguments!!.getString(
+                val artistName = backStackEntry.arguments!!.getString(
                     Routes.Albums.argument, ""
                 )
-                viewModel.fetchAlbumsByArtistId(artistId)
+                viewModel.fetchAlbumsByArtistName(artistName)
                 Albums(
                     viewModel
                 )
@@ -52,8 +52,8 @@ fun Navigation() {
 sealed class Routes(val route: String) {
     object Artists : Routes("Artists")
     object Albums : Routes("Albums") {
-        const val routeWithArgument = "Albums/{artistId}"
-        const val argument = "artistId"
+        const val routeWithArgument = "Albums/{artistName}"
+        const val argument = "artistName"
     }
 
     object Tracks : Routes("Tracks")
